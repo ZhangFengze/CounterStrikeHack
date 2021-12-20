@@ -1,0 +1,56 @@
+[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+push [zero+4]
+push [zero]
+push [half+4]
+push [half]
+call OPENGL32.glDepthRange
+
+call dword ptr [hw.dll+A917D4]
+
+push [half+4]
+push [half]
+push [one+4]
+push [one]
+call OPENGL32.glDepthRange
+
+
+originalcode:
+//call dword ptr [hw.dll+A917D4]
+
+exit:
+jmp returnhere
+
+
+
+zero:
+dq (double)0
+
+half:
+dq (double)0.5
+
+one:
+dq (double)1
+
+
+"hw.dll"+87162:
+jmp newmem
+nop
+returnhere:
+
+ 
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+dealloc(newmem)
+"hw.dll"+87162:
+call dword ptr [hw.dll+A917D4]
+//Alt: db FF 15 D4 17 2D 04
