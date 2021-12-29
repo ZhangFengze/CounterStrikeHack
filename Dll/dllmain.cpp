@@ -1,4 +1,5 @@
-﻿#include <fstream>
+﻿#include <cstdint>
+#include <fstream>
 #include <windows.h>
 #include <gl/GL.h>
 #include <detours/detours.h>
@@ -51,30 +52,52 @@ void Draw(float x, float y, float z)
         glEnable(GL_CULL_FACE);
 }
 
+float* GetPosition(uint32_t player)
+{
+    return (float*)(player + 0x88);
+}
+
+int GetTeam(uint32_t player)
+{
+	uint32_t pBasePlayer = player + 0x7C;
+    uint32_t basePlayer = *((uint32_t*)pBasePlayer);
+    if (basePlayer == 0)
+        return -1;
+    return *((int*)(basePlayer + 0x1C8));
+}
+
 void Tick()
 {
-    char* dll = (char*)GetModuleHandle("hw.dll");
+    uint32_t dll = (uint32_t)GetModuleHandle("hw.dll");
     output << "dll: " << (void*)dll << std::endl;
 
-    char* pArray = dll + 0x00843D60;
+    uint32_t pArray = dll + 0x00843D60;
     output << "pArray: " << (void*)pArray << std::endl;
 
-    char* array = (char*)(*((int*)pArray));
+    uint32_t array = *((uint32_t*)pArray);
     output << "array: " << (void*)array << std::endl;
 
-    if (!array)
+    if (array == 0)
         return;
+
+    int selfTeam = GetTeam(array + 0x324);
+    output << "self team: " << selfTeam << std::endl;
 
     for (int i = 2; i < 32; ++i)
     {
-        char* player = array + i * 0x324;
+        uint32_t player = array + i * 0x324;
 
-        float* position = (float*)(player + 0x88);
+        float* position = GetPosition(player);
         float x = position[0];
         float y = position[1];
         float z = position[2];
 
-        output << "pos: (" << x << ", " << y << ", " << z << ")" << std::endl;
+        int team = GetTeam(player);
+
+        output << "team: " << team << " pos: (" << x << ", " << y << ", " << z << ")" << std::endl;
+
+        if (team == -1 || team == selfTeam)
+            continue;
         Draw(x, y, z);
     }
 }
