@@ -1,7 +1,9 @@
-﻿#include <cstdint>
+﻿#include <thread>
+#include <cstdint>
 #include <fstream>
 #include <windows.h>
 #include <gl/GL.h>
+#include "glext.h"
 #include <detours/detours.h>
 #pragma comment(lib, "opengl32.lib")
 
@@ -12,16 +14,28 @@ int glEndCount = 0;
 
 void Draw(float x, float y, float z)
 {
+	static auto glActiveTexture = (PFNGLACTIVETEXTUREPROC)wglGetProcAddress("glActiveTexture");
+	static auto glActiveTextureARB = (PFNGLACTIVETEXTUREARBPROC)wglGetProcAddress("glActiveTextureARB");
+
+    int currentTexture;
+    glGetIntegerv(GL_ACTIVE_TEXTURE_ARB, &currentTexture);
+
+    glActiveTextureARB(GL_TEXTURE0);
+    bool texture0 = glIsEnabled(GL_TEXTURE_2D);
+    if (texture0)
+        glDisable(GL_TEXTURE_2D);
+
+    glActiveTextureARB(GL_TEXTURE1);
+    bool texture1 = glIsEnabled(GL_TEXTURE_2D);
+    if (texture1)
+        glDisable(GL_TEXTURE_2D);
+
     bool cull = glIsEnabled(GL_CULL_FACE);
     if (cull)
         glDisable(GL_CULL_FACE);
 
     double color[4];
     glGetDoublev(GL_CURRENT_COLOR, color);
-
-    bool texture = glIsEnabled(GL_TEXTURE_2D);
-    if (texture)
-        glDisable(GL_TEXTURE_2D);
 
     glDepthRange(0, 0.1f);
     {
@@ -43,13 +57,24 @@ void Draw(float x, float y, float z)
     }
     glDepthRange(0, 1);
 
-    if (texture)
-        glEnable(GL_TEXTURE_2D);
-
 	glColor4dv(color);
 
     if (cull)
         glEnable(GL_CULL_FACE);
+
+    if (texture1)
+    {
+		glActiveTextureARB(GL_TEXTURE1);
+        glEnable(GL_TEXTURE_2D);
+    }
+
+    if (texture0)
+    {
+		glActiveTextureARB(GL_TEXTURE0);
+        glEnable(GL_TEXTURE_2D);
+    }
+
+    glActiveTexture(currentTexture);
 }
 
 float* GetPosition(uint32_t player)
