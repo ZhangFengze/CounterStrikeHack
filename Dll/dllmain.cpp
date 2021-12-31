@@ -140,6 +140,11 @@ int GetTeam(uint32_t player)
     return *((int*)(basePlayer + 0x1C8));
 }
 
+bool IsAlive(uint32_t player)
+{
+    return *(int*)(player + 0x13C);
+}
+
 void Tick()
 {
     uint32_t dll = (uint32_t)GetModuleHandle("hw.dll");
@@ -167,10 +172,11 @@ void Tick()
         float z = position[2];
 
         int team = GetTeam(player);
+        bool alive = IsAlive(player);
 
-        output << "team: " << team << " pos: (" << x << ", " << y << ", " << z << ")" << std::endl;
+        output << "team: " << team << " alive: " << alive << " pos: (" << x << ", " << y << ", " << z << ")" << std::endl;
 
-        if (team == -1 || team == selfTeam)
+        if (team == -1 || team == selfTeam || !alive)
             continue;
         Draw(x, y, z);
     }
