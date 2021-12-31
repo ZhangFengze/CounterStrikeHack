@@ -166,6 +166,28 @@
       </Offsets>
     </CheatEntry>
     <CheatEntry>
+      <ID>42</ID>
+      <Description>"alive?"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>1</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"hw.dll"+007F6304</Address>
+      <Offsets>
+        <Offset>13C</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>43</ID>
+      <Description>"alive?"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>1</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"hw.dll"+007F6304</Address>
+      <Offsets>
+        <Offset>140</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
       <ID>34</ID>
       <Description>"some how make some one ptr"</Description>
       <ShowAsHex>1</ShowAsHex>
@@ -1138,7 +1160,90 @@ call dword ptr [hw.dll+A917D4]
         <Element Offset="124" Vartype="Pointer" Bytesize="4" OffsetHex="0000007C" Description="Pointer to instance of CBasePlayer" DisplayMethod="Unsigned Integer">
           <Structure Name="Autocreated from 0B246ED8" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
             <Elements>
-              <Element Offset="0" Vartype="Pointer" Bytesize="4" OffsetHex="00000000" DisplayMethod="Unsigned Integer"/>
+              <Element Offset="0" Vartype="Pointer" Bytesize="4" OffsetHex="00000000" DisplayMethod="Unsigned Integer">
+                <Structure Name="Autocreated from 1D12752C" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
+                  <Elements>
+                    <Element Offset="0" Vartype="Pointer" Bytesize="4" RLECount="88" OffsetHex="00000000" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="352" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000160" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="356" Vartype="Pointer" Bytesize="4" RLECount="77" OffsetHex="00000164" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="664" Vartype="Float" Bytesize="4" RLECount="2" OffsetHex="00000298" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="672" Vartype="4 Bytes" Bytesize="4" OffsetHex="000002A0" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="676" Vartype="Pointer" Bytesize="4" RLECount="60" OffsetHex="000002A4" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="916" Vartype="Float" Bytesize="4" RLECount="2" OffsetHex="00000394" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="924" Vartype="String" Bytesize="5" OffsetHex="0000039C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="929" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="000003A1" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="932" Vartype="Float" Bytesize="4" RLECount="4" OffsetHex="000003A4" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="948" Vartype="String" Bytesize="5" OffsetHex="000003B4" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="953" Vartype="Byte" Bytesize="1" OffsetHex="000003B9" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="954" Vartype="2 Bytes" Bytesize="2" OffsetHex="000003BA" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="956" Vartype="Float" Bytesize="4" RLECount="9" OffsetHex="000003BC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="992" Vartype="Byte" Bytesize="1" RLECount="4" OffsetHex="000003E0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="996" Vartype="Float" Bytesize="4" RLECount="11" OffsetHex="000003E4" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1040" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000410" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1044" Vartype="Double" Bytesize="8" RLECount="2" OffsetHex="00000414" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1060" Vartype="Float" Bytesize="4" RLECount="17" OffsetHex="00000424" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1128" Vartype="Byte" Bytesize="1" OffsetHex="00000468" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1129" Vartype="String" Bytesize="4" OffsetHex="00000469" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1133" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="0000046D" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1136" Vartype="Float" Bytesize="4" RLECount="5" OffsetHex="00000470" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1156" Vartype="Pointer" Bytesize="4" RLECount="117" OffsetHex="00000484" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1624" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000658" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1628" Vartype="String" Bytesize="6" OffsetHex="0000065C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1634" Vartype="Byte" Bytesize="1" RLECount="2" OffsetHex="00000662" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1636" Vartype="Float" Bytesize="4" RLECount="2" OffsetHex="00000664" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1644" Vartype="Pointer" Bytesize="4" RLECount="12" OffsetHex="0000066C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1692" Vartype="Float" Bytesize="4" OffsetHex="0000069C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1696" Vartype="String" Bytesize="5" OffsetHex="000006A0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1701" Vartype="Byte" Bytesize="1" OffsetHex="000006A5" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1702" Vartype="2 Bytes" Bytesize="2" OffsetHex="000006A6" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1704" Vartype="4 Bytes" Bytesize="4" OffsetHex="000006A8" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1708" Vartype="Double" Bytesize="8" OffsetHex="000006AC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1716" Vartype="Float" Bytesize="4" RLECount="3" OffsetHex="000006B4" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1728" Vartype="String" Bytesize="5" OffsetHex="000006C0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1733" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="000006C5" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1736" Vartype="Float" Bytesize="4" RLECount="4" OffsetHex="000006C8" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1752" Vartype="Double" Bytesize="8" OffsetHex="000006D8" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1760" Vartype="4 Bytes" Bytesize="4" OffsetHex="000006E0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1764" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="000006E4" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1767" Vartype="2 Bytes" Bytesize="2" OffsetHex="000006E7" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1769" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="000006E9" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1772" Vartype="Float" Bytesize="4" OffsetHex="000006EC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1776" Vartype="4 Bytes" Bytesize="4" OffsetHex="000006F0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1780" Vartype="Double" Bytesize="8" OffsetHex="000006F4" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1788" Vartype="Float" Bytesize="4" OffsetHex="000006FC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1792" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000700" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="1796" Vartype="Float" Bytesize="4" RLECount="23" OffsetHex="00000704" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1888" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000760" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="1892" Vartype="Float" Bytesize="4" OffsetHex="00000764" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1896" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000768" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="1900" Vartype="Pointer" Bytesize="4" RLECount="77" OffsetHex="0000076C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2208" Vartype="Float" Bytesize="4" RLECount="2" OffsetHex="000008A0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2216" Vartype="4 Bytes" Bytesize="4" OffsetHex="000008A8" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2220" Vartype="Double" Bytesize="8" RLECount="4" OffsetHex="000008AC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2252" Vartype="Float" Bytesize="4" OffsetHex="000008CC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2256" Vartype="4 Bytes" Bytesize="4" OffsetHex="000008D0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2260" Vartype="String" Bytesize="6" OffsetHex="000008D4" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2266" Vartype="Byte" Bytesize="1" RLECount="2" OffsetHex="000008DA" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2268" Vartype="Float" Bytesize="4" RLECount="2" OffsetHex="000008DC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2276" Vartype="String" Bytesize="5" OffsetHex="000008E4" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2281" Vartype="Byte" Bytesize="1" RLECount="3" OffsetHex="000008E9" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2284" Vartype="Float" Bytesize="4" RLECount="2" OffsetHex="000008EC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="2292" Vartype="Pointer" Bytesize="4" RLECount="179" OffsetHex="000008F4" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3008" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000BC0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3012" Vartype="Double" Bytesize="8" OffsetHex="00000BC4" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3020" Vartype="Float" Bytesize="4" RLECount="14" OffsetHex="00000BCC" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3076" Vartype="Pointer" Bytesize="4" RLECount="37" OffsetHex="00000C04" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3224" Vartype="Float" Bytesize="4" OffsetHex="00000C98" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3228" Vartype="Pointer" Bytesize="4" RLECount="2" OffsetHex="00000C9C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3236" Vartype="Float" Bytesize="4" RLECount="11" OffsetHex="00000CA4" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3280" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000CD0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3284" Vartype="Pointer" Bytesize="4" RLECount="78" OffsetHex="00000CD4" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3596" Vartype="Float" Bytesize="4" OffsetHex="00000E0C" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3600" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000E10" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="3604" Vartype="Pointer" Bytesize="4" RLECount="123" OffsetHex="00000E14" DisplayMethod="Unsigned Integer"/>
+                  </Elements>
+                </Structure>
+              </Element>
               <Element Offset="4" Vartype="Pointer" Bytesize="4" OffsetHex="00000004" DisplayMethod="Unsigned Integer">
                 <Structure Name="Autocreated from 10336CEC" AutoFill="0" AutoCreate="1" DefaultHex="0" AutoDestroy="0" DoNotSaveLocal="0" RLECompression="1" AutoCreateStructsize="4096">
                   <Elements>
@@ -1174,7 +1279,9 @@ call dword ptr [hw.dll+A917D4]
                     <Element Offset="396" Vartype="Pointer" Bytesize="4" OffsetHex="0000018C" DisplayMethod="Unsigned Integer"/>
                     <Element Offset="400" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="00000190" DisplayMethod="Unsigned Integer"/>
                     <Element Offset="412" Vartype="Pointer" Bytesize="4" OffsetHex="0000019C" DisplayMethod="Unsigned Integer"/>
-                    <Element Offset="416" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="000001A0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="416" Vartype="4 Bytes" Bytesize="4" OffsetHex="000001A0" DisplayMethod="Unsigned Integer"/>
+                    <Element Offset="420" Vartype="4 Bytes" Bytesize="4" OffsetHex="000001A4" DisplayMethod="Hexadecimal"/>
+                    <Element Offset="424" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="000001A8" DisplayMethod="Unsigned Integer"/>
                     <Element Offset="432" Vartype="Float" Bytesize="4" OffsetHex="000001B0" DisplayMethod="Unsigned Integer"/>
                     <Element Offset="436" Vartype="4 Bytes" Bytesize="4" RLECount="7" OffsetHex="000001B4" DisplayMethod="Unsigned Integer"/>
                     <Element Offset="464" Vartype="4 Bytes" Bytesize="4" OffsetHex="000001D0" DisplayMethod="Hexadecimal"/>
@@ -1768,12 +1875,17 @@ call dword ptr [hw.dll+A917D4]
         <Element Offset="164" Vartype="Float" Bytesize="4" OffsetHex="000000A4" Description="y vel?" DisplayMethod="Unsigned Integer"/>
         <Element Offset="168" Vartype="Float" Bytesize="4" OffsetHex="000000A8" Description="z vel?" DisplayMethod="Unsigned Integer"/>
         <Element Offset="172" Vartype="4 Bytes" Bytesize="4" RLECount="9" OffsetHex="000000AC" DisplayMethod="Unsigned Integer"/>
-        <Element Offset="208" Vartype="4 Bytes" Bytesize="4" OffsetHex="000000D0" DisplayMethod="Hexadecimal"/>
-        <Element Offset="212" Vartype="Float" Bytesize="4" OffsetHex="000000D4" DisplayMethod="Unsigned Integer"/>
-        <Element Offset="216" Vartype="4 Bytes" Bytesize="4" RLECount="8" OffsetHex="000000D8" DisplayMethod="Unsigned Integer"/>
-        <Element Offset="248" Vartype="Float" Bytesize="4" OffsetHex="000000F8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="208" Vartype="Float" Bytesize="4" OffsetHex="000000D0" Description="pitch?" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="212" Vartype="Float" Bytesize="4" OffsetHex="000000D4" Description="yaw?" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="216" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="000000D8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="232" Vartype="4 Bytes" Bytesize="4" OffsetHex="000000E8" DisplayMethod="Hexadecimal"/>
+        <Element Offset="236" Vartype="4 Bytes" Bytesize="4" RLECount="2" OffsetHex="000000EC" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="244" Vartype="Float" Bytesize="4" OffsetHex="000000F4" Description="pitch?" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="248" Vartype="Float" Bytesize="4" OffsetHex="000000F8" Description="yaw?" DisplayMethod="Unsigned Integer"/>
         <Element Offset="252" Vartype="4 Bytes" Bytesize="4" RLECount="15" OffsetHex="000000FC" DisplayMethod="Unsigned Integer"/>
-        <Element Offset="312" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="00000138" DisplayMethod="Hexadecimal"/>
+        <Element Offset="312" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000138" DisplayMethod="Hexadecimal"/>
+        <Element Offset="316" Vartype="Array of byte" Bytesize="4" OffsetHex="0000013C" Description="alive?" DisplayMethod="Hexadecimal"/>
+        <Element Offset="320" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000140" Description="alive?" DisplayMethod="Hexadecimal"/>
         <Element Offset="324" Vartype="Float" Bytesize="4" RLECount="15" OffsetHex="00000144" DisplayMethod="Unsigned Integer"/>
         <Element Offset="384" Vartype="Double" Bytesize="8" OffsetHex="00000180" DisplayMethod="Unsigned Integer"/>
         <Element Offset="392" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="00000188" DisplayMethod="Unsigned Integer"/>
@@ -1788,7 +1900,7 @@ call dword ptr [hw.dll+A917D4]
         <Element Offset="452" Vartype="4 Bytes" Bytesize="4" RLECount="7" OffsetHex="000001C4" DisplayMethod="Unsigned Integer"/>
         <Element Offset="480" Vartype="Float" Bytesize="4" OffsetHex="000001E0" DisplayMethod="Unsigned Integer"/>
         <Element Offset="484" Vartype="4 Bytes" Bytesize="4" OffsetHex="000001E4" DisplayMethod="Unsigned Integer"/>
-        <Element Offset="488" Vartype="Double" Bytesize="8" OffsetHex="000001E8" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="488" Vartype="Float" Bytesize="4" OffsetHex="000001E8" DisplayMethod="Unsigned Integer"/>
         <Element Offset="496" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="000001F0" DisplayMethod="Unsigned Integer"/>
         <Element Offset="508" Vartype="Float" Bytesize="4" OffsetHex="000001FC" DisplayMethod="Unsigned Integer"/>
         <Element Offset="512" Vartype="4 Bytes" Bytesize="4" RLECount="3" OffsetHex="00000200" DisplayMethod="Unsigned Integer"/>
@@ -2269,6 +2381,11 @@ call dword ptr [hw.dll+A917D4]
     <DisassemblerComment>
       <Address>"mp.dll"+64617</Address>
       <Comment>???
+</Comment>
+    </DisassemblerComment>
+    <DisassemblerComment>
+      <Address>"mp.dll"+6461F</Address>
+      <Comment>jump if ecx &lt; 0
 </Comment>
     </DisassemblerComment>
     <DisassemblerComment>
