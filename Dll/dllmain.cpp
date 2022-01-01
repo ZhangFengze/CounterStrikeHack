@@ -38,18 +38,35 @@ float* GetPosition(uint32_t player)
     return (float*)(player + 0x88);
 }
 
+template<typename T>
+std::optional<T> Get(std::initializer_list<uint32_t> offsets)
+{
+    if (offsets.size() == 0)
+        return std::nullopt;
+
+    auto iter = offsets.begin();
+    uint32_t p = *(iter++);
+	if (p == 0)
+		return std::nullopt;
+
+    while (iter != offsets.end())
+    {
+        p = *(uint32_t*)p;
+        if (p == 0)
+            return std::nullopt;
+        p += *(iter++);
+    }
+    return *(T*)p;
+}
+
 int GetTeam(uint32_t player)
 {
-	uint32_t pBasePlayer = player + 0x7C;
-    uint32_t basePlayer = *((uint32_t*)pBasePlayer);
-    if (basePlayer == 0)
-        return -1;
-    return *((int*)(basePlayer + 0x1C8));
+    return Get<int>({ player + 0x7C, 0x1C8 }).value_or(-1);
 }
 
 bool IsAlive(uint32_t player)
 {
-    return *(int*)(player + 0x13C);
+    return Get<int>({ player + 0x13C }).value_or(0);
 }
 
 void Tick()
