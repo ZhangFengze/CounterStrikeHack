@@ -6,5 +6,6 @@
   <ItemGroup>
     <ClInclude Include="graphics.h" />
     <ClInclude Include="memory.h" />
+    <ClInclude Include="log.h" />
   </ItemGroup>
 </Project>
