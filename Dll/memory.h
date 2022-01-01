@@ -22,7 +22,7 @@ std::optional<T> Get(std::initializer_list<uint32_t> offsets)
     return *(T*)p;
 }
 
-std::optional<uint32_t> GetPlayerArray()
+inline std::optional<uint32_t> GetPlayerArray()
 {
     uint32_t dll = (uint32_t)GetModuleHandle("hw.dll");
     return Get<uint32_t>({ dll + 0x00843D60 });
