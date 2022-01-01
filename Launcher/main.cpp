@@ -2,6 +2,21 @@
 #include <windows.h>
 #include <detours/detours.h>
 
+struct StopOnExit
+{
+    HANDLE h;
+    StopOnExit(HANDLE _h)
+    {
+        h = _h;
+    }
+    ~StopOnExit()
+    {
+        TerminateProcess(h, 1);
+        WaitForSingleObject(h, INFINITE);
+        CloseHandle(h);
+    }
+};
+
 int main()
 {
     char target[MAX_PATH] = R"(D:\SteamLibrary\steamapps\common\Half-Life\hl.exe -game cstrike)";
@@ -17,11 +32,14 @@ int main()
         NULL, FALSE, CREATE_DEFAULT_ERROR_MODE, NULL, workdir,
         &si, &pi, dll, NULL))
     {
-        printf("err");
+        printf("err\n");
     }
     else
     {
-        printf("ok");
+        printf("ok\n");
     }
+
+    StopOnExit _{pi.hProcess};
+    system("pause");
     return 0;
 }
