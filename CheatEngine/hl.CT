@@ -148,10 +148,11 @@
       </Offsets>
     </CheatEntry>
     <CheatEntry>
-      <ID>24</ID>
+      <ID>50</ID>
       <Description>"position x?"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
-      <Address>"hw.dll"+007F6304</Address>
+      <Address>hw.dll+007F6304</Address>
       <Offsets>
         <Offset>88</Offset>
       </Offsets>
@@ -163,6 +164,26 @@
       <Address>"hw.dll"+00843D60</Address>
       <Offsets>
         <Offset>3AC</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>52</ID>
+      <Description>"pitch?"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>hw.dll+007F6304</Address>
+      <Offsets>
+        <Offset>D0</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>51</ID>
+      <Description>"yaw?"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>hw.dll+007F6304</Address>
+      <Offsets>
+        <Offset>88+4*13</Offset>
       </Offsets>
     </CheatEntry>
     <CheatEntry>
@@ -315,6 +336,53 @@ call dword ptr [hw.dll+A917D4]
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
       <Address>"hw.dll"+00843D5C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>46</ID>
+      <Description>"view camera pos x?"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>hw.dll+EC9750</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>47</ID>
+      <Description>"view camera pos y?"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>hw.dll+EC9754</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>48</ID>
+      <Description>"view camera pos z?"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>hw.dll+EC9758</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>44</ID>
+      <Description>"view camera pitch?"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>hw.dll+EC975C</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>45</ID>
+      <Description>"view camera yaw?"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>hw.dll+EC9760</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>55</ID>
+      <Description>"real camera yaw"</Description>
+      <VariableType>Float</VariableType>
+      <Address>hw.dll+108AEC8</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>57</ID>
+      <Description>"real camera recoil?"</Description>
+      <VariableType>Float</VariableType>
+      <Address>hw.dll+108AED0</Address>
     </CheatEntry>
   </CheatEntries>
   <CheatCodes>
@@ -1147,6 +1215,30 @@ call dword ptr [hw.dll+A917D4]
         <Byte>84</Byte>
       </After>
     </CodeEntry>
+    <CodeEntry>
+      <Description>Change of fstp dword ptr [edx+eax-04]</Description>
+      <AddressString>hw.dll+200D5</AddressString>
+      <Before>
+        <Byte>4D</Byte>
+        <Byte>08</Byte>
+        <Byte>D8</Byte>
+        <Byte>40</Byte>
+        <Byte>FC</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>5C</Byte>
+        <Byte>02</Byte>
+        <Byte>FC</Byte>
+      </Actual>
+      <After>
+        <Byte>75</Byte>
+        <Byte>EB</Byte>
+        <Byte>5E</Byte>
+        <Byte>5D</Byte>
+        <Byte>C3</Byte>
+      </After>
+    </CodeEntry>
   </CheatCodes>
   <UserdefinedSymbols/>
   <Structures StructVersion="2">
@@ -1886,8 +1978,17 @@ call dword ptr [hw.dll+A917D4]
         <Element Offset="312" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000138" DisplayMethod="Hexadecimal"/>
         <Element Offset="316" Vartype="Array of byte" Bytesize="4" OffsetHex="0000013C" Description="alive?" DisplayMethod="Hexadecimal"/>
         <Element Offset="320" Vartype="4 Bytes" Bytesize="4" OffsetHex="00000140" Description="alive?" DisplayMethod="Hexadecimal"/>
-        <Element Offset="324" Vartype="Float" Bytesize="4" RLECount="15" OffsetHex="00000144" DisplayMethod="Unsigned Integer"/>
-        <Element Offset="384" Vartype="Double" Bytesize="8" OffsetHex="00000180" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="324" Vartype="Float" Bytesize="4" OffsetHex="00000144" Description="aabb min?" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="328" Vartype="Float" Bytesize="4" RLECount="2" OffsetHex="00000148" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="336" Vartype="Float" Bytesize="4" OffsetHex="00000150" Description="aabb max?" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="340" Vartype="Float" Bytesize="4" RLECount="2" OffsetHex="00000154" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="348" Vartype="Float" Bytesize="4" OffsetHex="0000015C" Description="aabb min?" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="352" Vartype="Float" Bytesize="4" RLECount="2" OffsetHex="00000160" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="360" Vartype="Float" Bytesize="4" OffsetHex="00000168" Description="aabb max?" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="364" Vartype="Float" Bytesize="4" RLECount="2" OffsetHex="0000016C" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="372" Vartype="Float" Bytesize="4" OffsetHex="00000174" Description="aabb len?" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="376" Vartype="Float" Bytesize="4" RLECount="3" OffsetHex="00000178" DisplayMethod="Unsigned Integer"/>
+        <Element Offset="388" Vartype="Float" Bytesize="4" OffsetHex="00000184" Description="dead time?" DisplayMethod="Unsigned Integer"/>
         <Element Offset="392" Vartype="4 Bytes" Bytesize="4" RLECount="4" OffsetHex="00000188" DisplayMethod="Unsigned Integer"/>
         <Element Offset="408" Vartype="Double" Bytesize="8" OffsetHex="00000198" DisplayMethod="Unsigned Integer"/>
         <Element Offset="416" Vartype="Float" Bytesize="4" OffsetHex="000001A0" DisplayMethod="Unsigned Integer"/>
@@ -1896,7 +1997,7 @@ call dword ptr [hw.dll+A917D4]
         <Element Offset="436" Vartype="Byte" Bytesize="1" RLECount="4" OffsetHex="000001B4" DisplayMethod="Unsigned Integer"/>
         <Element Offset="440" Vartype="Float" Bytesize="4" OffsetHex="000001B8" DisplayMethod="Unsigned Integer"/>
         <Element Offset="444" Vartype="4 Bytes" Bytesize="4" OffsetHex="000001BC" DisplayMethod="Unsigned Integer"/>
-        <Element Offset="448" Vartype="4 Bytes" Bytesize="4" OffsetHex="000001C0" DisplayMethod="Hexadecimal"/>
+        <Element Offset="448" Vartype="Array of byte" Bytesize="4" OffsetHex="000001C0" Description="pitch yaw?" DisplayMethod="Unsigned Integer"/>
         <Element Offset="452" Vartype="4 Bytes" Bytesize="4" RLECount="7" OffsetHex="000001C4" DisplayMethod="Unsigned Integer"/>
         <Element Offset="480" Vartype="Float" Bytesize="4" OffsetHex="000001E0" DisplayMethod="Unsigned Integer"/>
         <Element Offset="484" Vartype="4 Bytes" Bytesize="4" OffsetHex="000001E4" DisplayMethod="Unsigned Integer"/>
