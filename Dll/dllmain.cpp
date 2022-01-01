@@ -10,20 +10,13 @@
 #include <gl/GL.h>
 #include "glext.h"
 #include <detours/detours.h>
+#include <format>
 #pragma comment(lib, "opengl32.lib")
 
 auto output = std::ofstream("log.txt");
 auto glEnd_origin = glEnd;
 auto glClear_origin = glClear;
 int glEndCount = 0;
-
-std::string timestamp()
-{
-    std::ostringstream stream;
-    std::time_t t = std::time(nullptr);
-    stream << "[" << std::put_time(std::localtime(&t), "%F %T %Z") << "] ";
-    return stream.str();
-}
 
 struct DisableTexture
 {
@@ -187,7 +180,8 @@ void Tick()
         int team = GetTeam(player);
         bool alive = IsAlive(player);
 
-        output <<timestamp()<< " team: " << team << " alive: " << alive << " pos: (" << x << ", " << y << ", " << z << ")" << std::endl;
+        output << std::format("{}\tteam: {:3}\talive: {}\tpos: ({:12.6}, {:12.6}, {:12.6})\n",
+            std::chrono::system_clock::now(), team, alive, x, y, z);
 
         if (team == -1 || team == selfTeam || !alive)
             continue;
