@@ -4,6 +4,7 @@
     <CheatEntry>
       <ID>2</ID>
       <Description>"9mm back ammo"</Description>
+      <LastState Value="40" RealAddress="0D2511E0"/>
       <VariableType>4 Bytes</VariableType>
       <Address>"hw.dll"+00843D60</Address>
       <Offsets>
@@ -16,6 +17,7 @@
     <CheatEntry>
       <ID>0</ID>
       <Description>"cur weapon ammo"</Description>
+      <LastState Value="20" RealAddress="0FEFEC24"/>
       <VariableType>4 Bytes</VariableType>
       <Address>"hw.dll"+007F6304</Address>
       <Offsets>
@@ -27,6 +29,7 @@
     <CheatEntry>
       <ID>9</ID>
       <Description>"cur weapon ammo2"</Description>
+      <LastState Value="20" RealAddress="0FEFEC24"/>
       <VariableType>4 Bytes</VariableType>
       <Address>"hw.dll"+007F6304</Address>
       <Offsets>
@@ -39,12 +42,14 @@
     <CheatEntry>
       <ID>23</ID>
       <Description>"hp"</Description>
+      <LastState Value="100" RealAddress="18151738"/>
       <VariableType>4 Bytes</VariableType>
       <Address>client.dll+121738</Address>
     </CheatEntry>
     <CheatEntry>
       <ID>7</ID>
       <Description>"pistol ammo"</Description>
+      <LastState Value="20" RealAddress="0FEFEC24"/>
       <VariableType>4 Bytes</VariableType>
       <Address>"hw.dll"+007F6304</Address>
       <Offsets>
@@ -57,6 +62,7 @@
     <CheatEntry>
       <ID>8</ID>
       <Description>"pistol ammo"</Description>
+      <LastState Value="20" RealAddress="0FEFEC24"/>
       <VariableType>4 Bytes</VariableType>
       <Address>"hw.dll"+007F6304</Address>
       <Offsets>
@@ -68,6 +74,7 @@
     <CheatEntry>
       <ID>10</ID>
       <Description>"pointerscan result"</Description>
+      <LastState Value="40" RealAddress="0D2511E0"/>
       <VariableType>4 Bytes</VariableType>
       <Address>"hw.dll"+007F6304</Address>
       <Offsets>
@@ -78,6 +85,7 @@
     <CheatEntry>
       <ID>11</ID>
       <Description>"pointerscan result"</Description>
+      <LastState Value="40" RealAddress="0D2511E0"/>
       <VariableType>4 Bytes</VariableType>
       <Address>"hw.dll"+007F6304</Address>
       <Offsets>
@@ -90,6 +98,7 @@
     <CheatEntry>
       <ID>12</ID>
       <Description>"pointerscan result"</Description>
+      <LastState Value="40" RealAddress="0D2511E0"/>
       <VariableType>4 Bytes</VariableType>
       <Address>"hw.dll"+007F6304</Address>
       <Offsets>
@@ -102,6 +111,7 @@
     <CheatEntry>
       <ID>13</ID>
       <Description>"pointerscan result"</Description>
+      <LastState Value="40" RealAddress="0D2511E0"/>
       <VariableType>4 Bytes</VariableType>
       <Address>"hw.dll"+007F6304</Address>
       <Offsets>
@@ -114,6 +124,7 @@
     <CheatEntry>
       <ID>14</ID>
       <Description>"pointerscan result"</Description>
+      <LastState Value="40" RealAddress="0D2511E0"/>
       <VariableType>4 Bytes</VariableType>
       <Address>"hw.dll"+007F6304</Address>
       <Offsets>
@@ -126,6 +137,7 @@
     <CheatEntry>
       <ID>15</ID>
       <Description>"pointerscan result"</Description>
+      <LastState Value="40" RealAddress="0D2511E0"/>
       <VariableType>4 Bytes</VariableType>
       <Address>"hw.dll"+007F6304</Address>
       <Offsets>
@@ -138,6 +150,7 @@
     <CheatEntry>
       <ID>16</ID>
       <Description>"pointerscan result"</Description>
+      <LastState Value="40" RealAddress="0D2511E0"/>
       <VariableType>4 Bytes</VariableType>
       <Address>"hw.dll"+00843D60</Address>
       <Offsets>
@@ -150,6 +163,7 @@
     <CheatEntry>
       <ID>50</ID>
       <Description>"position x?"</Description>
+      <LastState Value="-1809" RealAddress="10341CF4"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>hw.dll+007F6304</Address>
@@ -160,6 +174,7 @@
     <CheatEntry>
       <ID>25</ID>
       <Description>"position x?"</Description>
+      <LastState Value="-1809" RealAddress="10341CF4"/>
       <VariableType>Float</VariableType>
       <Address>"hw.dll"+00843D60</Address>
       <Offsets>
@@ -169,6 +184,7 @@
     <CheatEntry>
       <ID>52</ID>
       <Description>"pitch?"</Description>
+      <LastState Value="0" RealAddress="10341D3C"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>hw.dll+007F6304</Address>
@@ -179,6 +195,7 @@
     <CheatEntry>
       <ID>51</ID>
       <Description>"yaw?"</Description>
+      <LastState Value="-89.00024414" RealAddress="10341D40"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>hw.dll+007F6304</Address>
@@ -189,6 +206,7 @@
     <CheatEntry>
       <ID>42</ID>
       <Description>"alive?"</Description>
+      <LastState Value="27BAC080" RealAddress="10341DA8"/>
       <ShowAsHex>1</ShowAsHex>
       <ShowAsSigned>1</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
@@ -200,6 +218,7 @@
     <CheatEntry>
       <ID>43</ID>
       <Description>"alive?"</Description>
+      <LastState Value="27BAC098" RealAddress="10341DAC"/>
       <ShowAsHex>1</ShowAsHex>
       <ShowAsSigned>1</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
@@ -296,6 +315,7 @@ call dword ptr [hw.dll+A917D4]
     <CheatEntry>
       <ID>36</ID>
       <Description>"player array begin"</Description>
+      <LastState Value="10341948" RealAddress="03083D60"/>
       <ShowAsHex>1</ShowAsHex>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
@@ -304,6 +324,7 @@ call dword ptr [hw.dll+A917D4]
     <CheatEntry>
       <ID>39</ID>
       <Description>"player array begin"</Description>
+      <LastState Value="10341948" RealAddress="03083D60"/>
       <ShowAsHex>1</ShowAsHex>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
@@ -312,6 +333,7 @@ call dword ptr [hw.dll+A917D4]
     <CheatEntry>
       <ID>37</ID>
       <Description>"max players"</Description>
+      <LastState Value="32" RealAddress="03047588"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
       <Address>hw.dll+807588</Address>
@@ -319,6 +341,7 @@ call dword ptr [hw.dll+A917D4]
     <CheatEntry>
       <ID>41</ID>
       <Description>"max max players?"</Description>
+      <LastState Value="32" RealAddress="0304758C"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
       <Address>hw.dll+80758C</Address>
@@ -326,6 +349,7 @@ call dword ptr [hw.dll+A917D4]
     <CheatEntry>
       <ID>38</ID>
       <Description>"player array used?"</Description>
+      <LastState Value="476" RealAddress="03083D58"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
       <Address>"hw.dll"+00843D58</Address>
@@ -333,6 +357,7 @@ call dword ptr [hw.dll+A917D4]
     <CheatEntry>
       <ID>40</ID>
       <Description>"player array capacity?"</Description>
+      <LastState Value="2265" RealAddress="03083D5C"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>4 Bytes</VariableType>
       <Address>"hw.dll"+00843D5C</Address>
@@ -340,6 +365,7 @@ call dword ptr [hw.dll+A917D4]
     <CheatEntry>
       <ID>46</ID>
       <Description>"view camera pos x?"</Description>
+      <LastState Value="-1808.96875" RealAddress="03709750"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>hw.dll+EC9750</Address>
@@ -347,6 +373,7 @@ call dword ptr [hw.dll+A917D4]
     <CheatEntry>
       <ID>47</ID>
       <Description>"view camera pos y?"</Description>
+      <LastState Value="2657.03125" RealAddress="03709754"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>hw.dll+EC9754</Address>
@@ -354,6 +381,7 @@ call dword ptr [hw.dll+A917D4]
     <CheatEntry>
       <ID>48</ID>
       <Description>"view camera pos z?"</Description>
+      <LastState Value="53.0625" RealAddress="03709758"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>hw.dll+EC9758</Address>
@@ -361,6 +389,7 @@ call dword ptr [hw.dll+A917D4]
     <CheatEntry>
       <ID>44</ID>
       <Description>"view camera pitch?"</Description>
+      <LastState Value="0" RealAddress="0370975C"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>hw.dll+EC975C</Address>
@@ -368,6 +397,7 @@ call dword ptr [hw.dll+A917D4]
     <CheatEntry>
       <ID>45</ID>
       <Description>"view camera yaw?"</Description>
+      <LastState Value="270.9997559" RealAddress="03709760"/>
       <ShowAsSigned>0</ShowAsSigned>
       <VariableType>Float</VariableType>
       <Address>hw.dll+EC9760</Address>
@@ -375,12 +405,38 @@ call dword ptr [hw.dll+A917D4]
     <CheatEntry>
       <ID>55</ID>
       <Description>"real camera yaw"</Description>
+      <LastState Value="270.9997559" RealAddress="038CAEC8"/>
       <VariableType>Float</VariableType>
       <Address>hw.dll+108AEC8</Address>
     </CheatEntry>
     <CheatEntry>
+      <ID>58</ID>
+      <Description>"target speed forward?"</Description>
+      <LastState Value="0" RealAddress="038CAEA0"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>hw.dll+108AEA0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>59</ID>
+      <Description>"target speed horizontal?"</Description>
+      <LastState Value="0" RealAddress="038CAEA4"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>hw.dll+108AEA4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>60</ID>
+      <Description>"real camera pos x?"</Description>
+      <LastState Value="-1809" RealAddress="038CAEE8"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Float</VariableType>
+      <Address>hw.dll+108AEE8</Address>
+    </CheatEntry>
+    <CheatEntry>
       <ID>57</ID>
       <Description>"real camera recoil?"</Description>
+      <LastState Value="0" RealAddress="038CAED0"/>
       <VariableType>Float</VariableType>
       <Address>hw.dll+108AED0</Address>
     </CheatEntry>
