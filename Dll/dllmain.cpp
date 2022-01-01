@@ -36,10 +36,6 @@ std::string matrix(float* matrix)
 
 void Tick()
 {
-    float mv[16];
-    glGetFloatv(GL_MODELVIEW_MATRIX, mv);
-    output << "matrix: \n" << matrix(mv) << std::endl;
-
     auto array = GetPlayerArray().value_or(0);
     if (array == 0)
         return;
