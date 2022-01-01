@@ -1,17 +1,18 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
-#include <thread>
 #include <cstdint>
-#include <ctime>
 #include <iomanip>
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <format>
+#include <chrono>
 #include <windows.h>
 #include <gl/GL.h>
 #include "glext.h"
 #include <detours/detours.h>
-#include <format>
 #include "graphics.h"
+#include "memory.h"
+
 #pragma comment(lib, "opengl32.lib")
 
 auto output = std::ofstream("log.txt");
@@ -33,62 +34,18 @@ std::string matrix(float* matrix)
     return stream.str();
 }
 
-float* GetPosition(uint32_t player)
-{
-    return (float*)(player + 0x88);
-}
-
-template<typename T>
-std::optional<T> Get(std::initializer_list<uint32_t> offsets)
-{
-    if (offsets.size() == 0)
-        return std::nullopt;
-
-    auto iter = offsets.begin();
-    uint32_t p = *(iter++);
-	if (p == 0)
-		return std::nullopt;
-
-    while (iter != offsets.end())
-    {
-        p = *(uint32_t*)p;
-        if (p == 0)
-            return std::nullopt;
-        p += *(iter++);
-    }
-    return *(T*)p;
-}
-
-int GetTeam(uint32_t player)
-{
-    return Get<int>({ player + 0x7C, 0x1C8 }).value_or(-1);
-}
-
-bool IsAlive(uint32_t player)
-{
-    return Get<int>({ player + 0x13C }).value_or(0);
-}
-
 void Tick()
 {
     float mv[16];
     glGetFloatv(GL_MODELVIEW_MATRIX, mv);
     output << "matrix: \n" << matrix(mv) << std::endl;
 
-    uint32_t dll = (uint32_t)GetModuleHandle("hw.dll");
-    output << "dll: " << (void*)dll << std::endl;
-
-    uint32_t pArray = dll + 0x00843D60;
-    output << "pArray: " << (void*)pArray << std::endl;
-
-    uint32_t array = *((uint32_t*)pArray);
-    output << "array: " << (void*)array << std::endl;
-
+    auto array = GetPlayerArray().value_or(0);
     if (array == 0)
         return;
 
-    int selfTeam = GetTeam(array + 0x324);
-    output << "self team: " << selfTeam << std::endl;
+    uint32_t self = array + 0x324;
+    int selfTeam = GetTeam(self);
 
     for (int i = 2; i < 32; ++i)
     {
