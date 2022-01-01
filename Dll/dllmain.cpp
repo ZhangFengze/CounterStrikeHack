@@ -40,25 +40,25 @@ void Tick()
     if (array == 0)
         return;
 
-    uint32_t self = array + 0x324;
-    int selfTeam = GetTeam(self);
+    uint32_t player = array + 0x324;
+    int playerTeam = GetTeam(player);
 
     for (int i = 2; i < 32; ++i)
     {
-        uint32_t player = array + i * 0x324;
+        uint32_t other = array + i * 0x324;
 
-        float* position = GetPosition(player);
+        float* position = GetPosition(other);
         float x = position[0];
         float y = position[1];
         float z = position[2];
 
-        int team = GetTeam(player);
-        bool alive = IsAlive(player);
+        int otherTeam = GetTeam(other);
+        bool otherAlive = IsAlive(other);
 
         output << std::format("{}\tteam: {:3}\talive: {}\tpos: ({:12.6}, {:12.6}, {:12.6})\n",
-            std::chrono::system_clock::now(), team, alive, x, y, z);
+            std::chrono::system_clock::now(), otherTeam, otherAlive, x, y, z);
 
-        if (team == -1 || team == selfTeam || !alive)
+        if (otherTeam == -1 || otherTeam == playerTeam || !otherAlive)
             continue;
         Draw(x, y, z, 1, 0, 0);
     }
