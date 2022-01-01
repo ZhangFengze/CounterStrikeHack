@@ -9,11 +9,31 @@
 #include <windows.h>
 #include <gl/GL.h>
 #include "glext.h"
+#include <glm/glm.hpp>
 #include <detours/detours.h>
 #include "graphics.h"
 #include "memory.h"
 
 #pragma comment(lib, "opengl32.lib")
+
+namespace std
+{
+	template <>
+	struct formatter<glm::vec3>
+	{
+		constexpr auto parse(format_parse_context& ctx)
+		{
+            return end(ctx);
+		}
+
+		template <typename FormatContext>
+		auto format(const glm::vec3& v, FormatContext& ctx)
+		{
+			auto&& out = ctx.out();
+            return format_to(out, "({:.6},{:.6},{:.6})", v.x, v.y, v.z);
+		}
+	};
+}
 
 auto output = std::ofstream("log.txt");
 auto glEnd_origin = glEnd;
@@ -42,26 +62,44 @@ void Tick()
 
     uint32_t player = array + 0x324;
     int playerTeam = GetTeam(player);
+    uint32_t enemy = 0;
 
     for (int i = 2; i < 32; ++i)
     {
         uint32_t other = array + i * 0x324;
-
-        float* position = GetPosition(other);
-        float x = position[0];
-        float y = position[1];
-        float z = position[2];
-
+        auto otherPosition = GetPosition(other);
         int otherTeam = GetTeam(other);
         bool otherAlive = IsAlive(other);
 
-        output << std::format("{}\tteam: {:3}\talive: {}\tpos: ({:12.6}, {:12.6}, {:12.6})\n",
-            std::chrono::system_clock::now(), otherTeam, otherAlive, x, y, z);
+        output << std::format("{}\tteam: {:3}\talive: {}\tpos: {}\n",
+            std::chrono::system_clock::now(), otherTeam, otherAlive, otherPosition);
 
         if (otherTeam == -1 || otherTeam == playerTeam || !otherAlive)
             continue;
-        Draw(x, y, z, 1, 0, 0);
+        if (enemy == 0)
+        {
+			enemy = other;
+            Draw(otherPosition, glm::vec3{ 0,0,1 });
+        }
+        else
+        {
+            Draw(otherPosition, glm::vec3{ 1,0,0 });
+        }
     }
+
+    if (enemy == 0)
+        return;
+
+    glm::vec3 cameraPos = CameraPosition();
+    glm::vec3 enemyPos = GetPosition(enemy);
+    glm::vec3 offset = enemyPos - cameraPos;
+
+    float yaw = glm::degrees(std::atan2(offset.y, offset.x));
+    float pitch = -glm::degrees(std::atan(offset.z / std::sqrt(offset.x * offset.x + offset.y * offset.y)));
+    CameraYaw() = yaw;
+    CameraPitch() = pitch;
+
+    output << std::format("camera pos: {} yaw {} pitch {}\n", cameraPos, yaw, pitch);
 }
 
 void APIENTRY glEnd_mine(void)

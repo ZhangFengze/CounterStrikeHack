@@ -1,5 +1,6 @@
 #pragma once
 #include <optional>
+#include <glm/glm.hpp>
 
 template<typename T>
 std::optional<T> Get(std::initializer_list<uint32_t> offsets)
@@ -28,9 +29,10 @@ inline std::optional<uint32_t> GetPlayerArray()
     return Get<uint32_t>({ dll + 0x00843D60 });
 }
 
-inline float* GetPosition(uint32_t player)
+inline glm::vec3 GetPosition(uint32_t player)
 {
-    return (float*)(player + 0x88);
+    auto p = (float*)(player + 0x88);
+    return { p[0],p[1],p[2] };
 }
 
 inline int GetTeam(uint32_t player)
@@ -41,4 +43,23 @@ inline int GetTeam(uint32_t player)
 inline bool IsAlive(uint32_t player)
 {
     return Get<int>({ player + 0x13C }).value_or(0);
+}
+
+float& CameraPitch()
+{
+    uint32_t dll = (uint32_t)GetModuleHandle("hw.dll");
+    return *(float*)(dll + 0x108AEC4);
+}
+
+float& CameraYaw()
+{
+    uint32_t dll = (uint32_t)GetModuleHandle("hw.dll");
+    return *(float*)(dll + 0x108AEC8);
+}
+
+glm::vec3 CameraPosition()
+{
+    uint32_t dll = (uint32_t)GetModuleHandle("hw.dll");
+    float* p = (float*)(dll + 0x108AEE8);
+    return { p[0],p[1],p[2] };
 }
