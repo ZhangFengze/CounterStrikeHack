@@ -18,6 +18,20 @@ auto glEnd_origin = glEnd;
 auto glClear_origin = glClear;
 int glEndCount = 0;
 
+std::string matrix(float* matrix)
+{
+    std::ostringstream stream;
+    for (int row = 0; row < 4; ++row)
+    {
+        for (int col = 0; col < 4; ++col)
+        {
+            stream << std::format("{:12.6f}\t", matrix[row * 4 + col]);
+        }
+        stream << std::endl;
+    }
+    return stream.str();
+}
+
 struct DisableTexture
 {
     int currentTexture;
@@ -153,6 +167,10 @@ bool IsAlive(uint32_t player)
 
 void Tick()
 {
+    float mv[16];
+    glGetFloatv(GL_MODELVIEW_MATRIX, mv);
+    output << "matrix: \n" << matrix(mv) << std::endl;
+
     uint32_t dll = (uint32_t)GetModuleHandle("hw.dll");
     output << "dll: " << (void*)dll << std::endl;
 
