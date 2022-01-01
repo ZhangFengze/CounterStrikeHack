@@ -1,6 +1,11 @@
-﻿#include <thread>
+﻿#define _CRT_SECURE_NO_WARNINGS
+#include <thread>
 #include <cstdint>
+#include <ctime>
+#include <iomanip>
+#include <iostream>
 #include <fstream>
+#include <sstream>
 #include <windows.h>
 #include <gl/GL.h>
 #include "glext.h"
@@ -11,6 +16,14 @@ auto output = std::ofstream("log.txt");
 auto glEnd_origin = glEnd;
 auto glClear_origin = glClear;
 int glEndCount = 0;
+
+std::string timestamp()
+{
+    std::ostringstream stream;
+    std::time_t t = std::time(nullptr);
+    stream << "[" << std::put_time(std::localtime(&t), "%F %T %Z") << "] ";
+    return stream.str();
+}
 
 struct DisableTexture
 {
@@ -174,7 +187,7 @@ void Tick()
         int team = GetTeam(player);
         bool alive = IsAlive(player);
 
-        output << "team: " << team << " alive: " << alive << " pos: (" << x << ", " << y << ", " << z << ")" << std::endl;
+        output <<timestamp()<< " team: " << team << " alive: " << alive << " pos: (" << x << ", " << y << ", " << z << ")" << std::endl;
 
         if (team == -1 || team == selfTeam || !alive)
             continue;
