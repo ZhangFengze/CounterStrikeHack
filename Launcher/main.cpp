@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <filesystem>
 #include <windows.h>
 #include <detours/detours.h>
 
@@ -21,7 +22,7 @@ int main()
 {
     char target[MAX_PATH] = R"(D:\SteamLibrary\steamapps\common\Half-Life\hl.exe -game cstrike)";
     char workdir[MAX_PATH] = R"(D:\SteamLibrary\steamapps\common\Half-Life\)";
-    char dll[MAX_PATH] = R"(D:\Projects\CounterStrikeHack\Release\Dll.dll)";
+    auto dll = std::filesystem::current_path() / "Dll.dll";
 
     STARTUPINFO si;
     PROCESS_INFORMATION pi;
@@ -30,7 +31,7 @@ int main()
     si.cb = sizeof(STARTUPINFO);
     if (!DetourCreateProcessWithDll(NULL, target, NULL,
         NULL, FALSE, CREATE_DEFAULT_ERROR_MODE, NULL, workdir,
-        &si, &pi, dll, NULL))
+        &si, &pi, dll.string().c_str(), NULL))
     {
         printf("err\n");
     }
