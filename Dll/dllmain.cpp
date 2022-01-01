@@ -60,7 +60,7 @@ void Tick()
 
         if (team == -1 || team == selfTeam || !alive)
             continue;
-        Draw(x, y, z);
+        Draw(x, y, z, 1, 0, 0);
     }
 }
 

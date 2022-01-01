@@ -90,7 +90,7 @@ struct ForceDepth0
     }
 };
 
-inline void Draw(float x, float y, float z)
+inline void Draw(float x, float y, float z, float r, float g, float b)
 {
     DisableTexture _;
     DisableCulling __;
@@ -101,7 +101,7 @@ inline void Draw(float x, float y, float z)
 	float height = 10;
 	glBegin(GL_QUADS);
 
-	glColor3f(1.f, 0.0f, 0.f);
+	glColor3f(r, g, b);
 
 	glVertex3f(x, y, z);
 	glVertex3f(x + width, y, z);
