@@ -97,6 +97,7 @@ void APIENTRY glClear_mine(GLbitfield mask)
         DetourAttach(&(PVOID&)glEnd_origin, glEnd_mine);
         DetourAttach(&(PVOID&)glClear_origin, glClear_mine);
         DetourTransactionCommit();
+        output << "dll attach" << std::endl;
     }
     break;
     case DLL_PROCESS_DETACH:
@@ -105,6 +106,7 @@ void APIENTRY glClear_mine(GLbitfield mask)
         DetourDetach(&(PVOID&)glEnd_origin, glEnd_mine);
         DetourDetach(&(PVOID&)glClear_origin, glClear_mine);
         DetourTransactionCommit();
+        output << "dll detach" << std::endl;
         break;
     case DLL_THREAD_ATTACH:
     case DLL_THREAD_DETACH:
