@@ -2,6 +2,18 @@
 #include <optional>
 #include <glm/glm.hpp>
 
+#if 0
+const int playerArrayOffset = 0x00843D60;
+const int cameraPitchOffset = 0x108AEC4;
+const int cameraYawOffset = 0x108AEC8;
+const int cameraPositionOffset = 0x108AEE8;
+#else
+const int playerArrayOffset = 0x00809820;
+const int cameraPitchOffset = 0x108AEC4 - 0x34520;
+const int cameraYawOffset = 0x108AEC8 - 0x34520;
+const int cameraPositionOffset = 0x108AEE8 - 0x34520;
+#endif
+
 template<typename T>
 std::optional<T> Get(std::initializer_list<uint32_t> offsets)
 {
@@ -26,7 +38,7 @@ std::optional<T> Get(std::initializer_list<uint32_t> offsets)
 inline std::optional<uint32_t> GetPlayerArray()
 {
     uint32_t dll = (uint32_t)GetModuleHandle("hw.dll");
-    return Get<uint32_t>({ dll + 0x00843D60 });
+    return Get<uint32_t>({ dll + playerArrayOffset });
 }
 
 inline glm::vec3 GetPosition(uint32_t player)
@@ -48,18 +60,18 @@ inline bool IsAlive(uint32_t player)
 float& CameraPitch()
 {
     uint32_t dll = (uint32_t)GetModuleHandle("hw.dll");
-    return *(float*)(dll + 0x108AEC4);
+    return *(float*)(dll + cameraPitchOffset);
 }
 
 float& CameraYaw()
 {
     uint32_t dll = (uint32_t)GetModuleHandle("hw.dll");
-    return *(float*)(dll + 0x108AEC8);
+    return *(float*)(dll + cameraYawOffset);
 }
 
 glm::vec3 CameraPosition()
 {
     uint32_t dll = (uint32_t)GetModuleHandle("hw.dll");
-    float* p = (float*)(dll + 0x108AEE8);
+    float* p = (float*)(dll + cameraPositionOffset);
     return { p[0],p[1],p[2] };
 }
