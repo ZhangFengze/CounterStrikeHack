@@ -41,7 +41,7 @@ struct PlayerInfo
         aimPitch = -glm::degrees(std::atan(offset.z / std::sqrt(offset.x * offset.x + offset.y * offset.y)));
 
         auto aim = glm::quat{ glm::vec3{0,glm::radians(CameraPitch()),glm::radians(CameraYaw())} }*glm::vec3{ 1,0,0 };
-        aimAngleDistance = glm::angle(aim, glm::normalize(offset));
+        aimAngleDistance = glm::degrees(glm::angle(aim, glm::normalize(offset)));
     }
 };
 
@@ -77,20 +77,20 @@ void Tick()
 			return left.aimAngleDistance < right.aimAngleDistance;
 		});
 
-    for (auto beg = enemies.begin(); beg != enemies.end(); ++beg)
+    for (auto it = enemies.begin(); it != enemies.end(); ++it)
     {
-        if (beg == minIt)
+        if (it == minIt && it->aimAngleDistance < 5)
         {
 			if (GetKeyState(VK_LBUTTON) & 0x8000)
 			{
-                CameraYaw() = beg->aimYaw;
-                CameraPitch() = beg->aimPitch;
+                CameraYaw() = it->aimYaw;
+                CameraPitch() = it->aimPitch;
 			}
-			Draw(beg->position, glm::vec3{ 0,0,1 });
+			Draw(it->position, glm::vec3{ 0,0,1 });
         }
         else
         {
-			Draw(beg->position, glm::vec3{ 1,0,0 });
+			Draw(it->position, glm::vec3{ 1,0,0 });
         }
     }
 
