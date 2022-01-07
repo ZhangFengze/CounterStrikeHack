@@ -10,6 +10,7 @@
 #include <gl/GL.h>
 #include "glext.h"
 #include <glm/glm.hpp>
+#include <glm/gtx/vector_angle.hpp>
 #include <detours/detours.h>
 #include "graphics.h"
 #include "memory.h"
@@ -22,6 +23,28 @@ auto glEnd_origin = glEnd;
 auto glClear_origin = glClear;
 int glEndCount = 0;
 
+struct PlayerInfo
+{
+    uint32_t p;
+    glm::vec3 position;
+    float aimYaw;
+    float aimPitch;
+    float aimAngleDistance;
+
+    PlayerInfo(uint32_t p)
+    {
+        this->p = p;
+        position = GetPosition(p);
+
+        glm::vec3 offset = position - CameraPosition();
+		aimYaw = glm::degrees(std::atan2(offset.y, offset.x));
+        aimPitch = -glm::degrees(std::atan(offset.z / std::sqrt(offset.x * offset.x + offset.y * offset.y)));
+
+        auto aim = glm::quat{ glm::vec3{0,glm::radians(CameraPitch()),glm::radians(CameraYaw())} }*glm::vec3{ 1,0,0 };
+        aimAngleDistance = glm::angle(aim, glm::normalize(offset));
+    }
+};
+
 void Tick()
 {
     auto array = GetPlayerArray().value_or(0);
@@ -30,8 +53,8 @@ void Tick()
 
     uint32_t player = array + 0x324;
     int playerTeam = GetTeam(player);
-    uint32_t enemy = 0;
 
+    std::vector<PlayerInfo> enemies;
     for (int i = 2; i < 32; ++i)
     {
         uint32_t other = array + i * 0x324;
@@ -44,30 +67,35 @@ void Tick()
 
         if (otherTeam == -1 || otherTeam == playerTeam || !otherAlive)
             continue;
-        if (enemy == 0)
+        enemies.emplace_back(other);
+    }
+
+
+	auto minIt = std::min_element(enemies.begin(), enemies.end(),
+		[](const auto& left, const auto& right)
+		{
+			return left.aimAngleDistance < right.aimAngleDistance;
+		});
+
+    for (auto beg = enemies.begin(); beg != enemies.end(); ++beg)
+    {
+        if (beg == minIt)
         {
-			enemy = other;
-            Draw(otherPosition, glm::vec3{ 0,0,1 });
+			if (GetKeyState(VK_LBUTTON) & 0x8000)
+			{
+                CameraYaw() = beg->aimYaw;
+                CameraPitch() = beg->aimPitch;
+			}
+			Draw(beg->position, glm::vec3{ 0,0,1 });
         }
         else
         {
-            Draw(otherPosition, glm::vec3{ 1,0,0 });
+			Draw(beg->position, glm::vec3{ 1,0,0 });
         }
     }
 
-    if (enemy == 0)
-        return;
-
-    glm::vec3 cameraPos = CameraPosition();
-    glm::vec3 enemyPos = GetPosition(enemy);
-    glm::vec3 offset = enemyPos - cameraPos;
-
-    float yaw = glm::degrees(std::atan2(offset.y, offset.x));
-    float pitch = -glm::degrees(std::atan(offset.z / std::sqrt(offset.x * offset.x + offset.y * offset.y)));
-    CameraYaw() = yaw;
-    CameraPitch() = pitch;
-
-    output << std::format("camera pos: {} yaw {} pitch {}\n", cameraPos, yaw, pitch);
+	auto aim = glm::quat{ glm::vec3{0,glm::radians(CameraPitch()),glm::radians(CameraYaw())} }*glm::vec3{ 1,0,0 };
+    output << std::format("camera pos: {}\tyaw:{}\tpitch:{}\taim:{}\n", CameraPosition(), CameraYaw(), CameraPitch(), aim);
 }
 
 void APIENTRY glEnd_mine(void)
