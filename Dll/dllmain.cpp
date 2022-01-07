@@ -40,7 +40,7 @@ struct PlayerInfo
 		aimYaw = glm::degrees(std::atan2(offset.y, offset.x));
         aimPitch = -glm::degrees(std::atan(offset.z / std::sqrt(offset.x * offset.x + offset.y * offset.y)));
 
-        auto aim = glm::quat{ glm::vec3{0,glm::radians(CameraPitch()),glm::radians(CameraYaw())} }*glm::vec3{ 1,0,0 };
+        auto aim = glm::quat{ glm::vec3{0,glm::radians(InputCameraPitch()+RecoilCameraPitch()),glm::radians(InputCameraYaw()+RecoilCameraYaw())} }*glm::vec3{ 1,0,0 };
         aimAngleDistance = glm::degrees(glm::angle(aim, glm::normalize(offset)));
     }
 };
@@ -83,8 +83,8 @@ void Tick()
         {
 			if (GetKeyState(VK_LBUTTON) & 0x8000)
 			{
-                CameraYaw() = it->aimYaw;
-                CameraPitch() = it->aimPitch;
+                InputCameraYaw() = it->aimYaw - RecoilCameraYaw();
+                InputCameraPitch() = it->aimPitch - RecoilCameraPitch();
 			}
 			Draw(it->position, glm::vec3{ 0,0,1 });
         }
@@ -94,8 +94,8 @@ void Tick()
         }
     }
 
-	auto aim = glm::quat{ glm::vec3{0,glm::radians(CameraPitch()),glm::radians(CameraYaw())} }*glm::vec3{ 1,0,0 };
-    output << std::format("camera pos: {}\tyaw:{}\tpitch:{}\taim:{}\n", CameraPosition(), CameraYaw(), CameraPitch(), aim);
+	auto aim = glm::quat{ glm::vec3{0,glm::radians(InputCameraPitch()),glm::radians(InputCameraYaw())} }*glm::vec3{ 1,0,0 };
+    output << std::format("camera pos: {}\tyaw:{}\tpitch:{}\taim:{}\n", CameraPosition(), InputCameraYaw(), InputCameraPitch(), aim);
 }
 
 void APIENTRY glEnd_mine(void)

@@ -4,13 +4,17 @@
 
 #if 1
 const int playerArrayOffset = 0x00843D60;
-const int cameraPitchOffset = 0x108AEC4;
-const int cameraYawOffset = 0x108AEC8;
+const int inputCameraPitchOffset = 0x108AEC4;
+const int inputCameraYawOffset = 0x108AEC8;
+const int recoilCameraPitchOffset = inputCameraPitchOffset + 12;
+const int recoilCameraYawOffset = inputCameraYawOffset + 12;
 const int cameraPositionOffset = 0x108AEE8;
 #else
 const int playerArrayOffset = 0x00809820;
-const int cameraPitchOffset = 0x108AEC4 - 0x34520;
-const int cameraYawOffset = 0x108AEC8 - 0x34520;
+const int inputCameraPitchOffset = 0x108AEC4 - 0x34520;
+const int inputCameraYawOffset = 0x108AEC8 - 0x34520;
+const int recoilCameraPitchOffset = inputCameraPitchOffset + 12;
+const int recoilCameraYawOffset = inputCameraYawOffset + 12;
 const int cameraPositionOffset = 0x108AEE8 - 0x34520;
 #endif
 
@@ -57,16 +61,28 @@ inline bool IsAlive(uint32_t player)
     return Get<int>({ player + 0x13C }).value_or(0);
 }
 
-float& CameraPitch()
+float& InputCameraPitch()
 {
     uint32_t dll = (uint32_t)GetModuleHandle("hw.dll");
-    return *(float*)(dll + cameraPitchOffset);
+    return *(float*)(dll + inputCameraPitchOffset);
 }
 
-float& CameraYaw()
+float& InputCameraYaw()
 {
     uint32_t dll = (uint32_t)GetModuleHandle("hw.dll");
-    return *(float*)(dll + cameraYawOffset);
+    return *(float*)(dll + inputCameraYawOffset);
+}
+
+float RecoilCameraPitch()
+{
+    uint32_t dll = (uint32_t)GetModuleHandle("hw.dll");
+    return *(float*)(dll + recoilCameraPitchOffset);
+}
+
+float RecoilCameraYaw()
+{
+    uint32_t dll = (uint32_t)GetModuleHandle("hw.dll");
+    return *(float*)(dll + recoilCameraYawOffset);
 }
 
 glm::vec3 CameraPosition()
