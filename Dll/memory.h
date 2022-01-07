@@ -2,7 +2,7 @@
 #include <optional>
 #include <glm/glm.hpp>
 
-#if 0
+#if 1
 const int playerArrayOffset = 0x00843D60;
 const int cameraPitchOffset = 0x108AEC4;
 const int cameraYawOffset = 0x108AEC8;
